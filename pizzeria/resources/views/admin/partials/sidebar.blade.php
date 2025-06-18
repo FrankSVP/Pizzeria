@@ -16,14 +16,13 @@
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTopMenu"
         aria-expanded="true" aria-controls="collapseTopMenu">
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Parte superior</span>
+        <span>Manejo de Usuarios</span>
     </a>
     <div id="collapseTopMenu" class="collapse" aria-labelledby="headingTopMenu" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           
-            <a class="collapse-item" >Inicio</a>
-            <a class="collapse-item" >Menu 1</a>
-            <a class="collapse-item" >Menú 2</a>
+           <a class="collapse-item" href="{{ route('tipousuario.index') }}">Tipo de Usuarios</a>
+
 
         </div>
     </div>

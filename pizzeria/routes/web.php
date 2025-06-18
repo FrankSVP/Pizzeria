@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TipoUsuarioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
-    
+
+    /* Route::resource('menusuperior', 'MenuSuperiorController')->names('menusuperior');*/
+
+     Route::resource('tipousuario', 'TipoUsuarioController')->names('tipousuario');
+
 });
