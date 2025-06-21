@@ -22,5 +22,6 @@ Route::prefix('admin')->group(function () {
     /* Route::resource('menusuperior', 'MenuSuperiorController')->names('menusuperior');*/
 
      Route::resource('tipousuario', 'TipoUsuarioController')->names('tipousuario');
+     Route::resource('cliente', 'ClienteController')->names('cliente');
 
 });

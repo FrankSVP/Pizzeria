@@ -1,9 +1,6 @@
 create database  bdpizzeria;
 use bdpizzeria ;
 
-
-drop table tipousuario;
-
 create table tipousuario(
 id int auto_increment not null primary key,
 tipousuario varchar(50),
@@ -14,11 +11,11 @@ updated_at TIMESTAMP NULL DEFAULT NULL
 
 
 
-insert into tipousuario(tipousuario,estadotipousuario) values ("Administrador",1);
+insert into tipousuario(tipousuario,activo) values ("Administrador",1);
 /*Vista de Total de Tipo de Usuarios*/
 create view mostrarusuarios as
 select tipousuario.id , tipousuario.tipousuario  from tipousuario
-WHERE tipousuario.estadotipousuario=1;
+WHERE tipousuario.activo=1;
 
 select * from mostrarusuarios;
 
@@ -28,7 +25,7 @@ select * from mostrarusuarios;
 DELIMITER $$
 CREATE PROCEDURE ingresarnuevotipousuario(IN paramtipousuario varchar(50))
 BEGIN
-insert into tipousuario (tipousuario,estadotipousuario) values (paramtipousuario,1);
+insert into tipousuario (tipousuario,activo) values (paramtipousuario,1);
 END$$
 DELIMITER ;
 
@@ -44,7 +41,7 @@ DELIMITER ;
 DELIMITER $$
 CREATE PROCEDURE eliminartipousuario(IN paramidtipousuario int)
 BEGIN
-UPDATE tipousuario set tipousuario.estadotipousuario =0 WHERE tipousuario.id= paramidtipousuario;
+UPDATE tipousuario set tipousuario.activo =0 WHERE tipousuario.id= paramidtipousuario;
 END$$
 DELIMITER ;
 
@@ -55,7 +52,7 @@ id int auto_increment not null primary key,
 usuario varchar(50),
 contrasena varchar(50),
 fktipousuario int,
-estadotipousuario bit,
+activo bit,
 foreign key(fktipousuario) references tipousuario(id)
 );
 
