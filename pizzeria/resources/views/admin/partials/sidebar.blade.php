@@ -22,7 +22,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
 
                 <a class="collapse-item" href="{{ route('tipousuario.index') }}">Tipo de Usuarios</a>
-
+                <a class="collapse-item" href="{{ route('usuario.index') }}">Usuarios</a>
 
             </div>
         </div>

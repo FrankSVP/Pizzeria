@@ -48,21 +48,24 @@ END$$
 DELIMITER ;
 
 
-
+/*ESTO YA ESTÁ EN LA MIGRACIÓN*/
 create table usuario(
 id int auto_increment not null primary key,
 usuario varchar(50),
 contrasena varchar(50),
-fktipousuario int,
-activo bit,
+activo BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMP NULL DEFAULT NULL,
+updated_at TIMESTAMP NULL DEFAULT NULL,
 foreign key(fktipousuario) references tipousuario(id)
 );
 
-
+/*ESTO YA ESTÁ EN LA MIGRACIÓN*/
 create table tipoproducto(
 id int auto_increment not null primary key,
 tipoproducto varchar(50),
-estadotipoproducto bit
+activo BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMP NULL DEFAULT NULL,
+updated_at TIMESTAMP NULL DEFAULT NULL
 );
 
 
@@ -168,11 +171,6 @@ BEGIN
 UPDATE producto set producto.estadoproducto =0 WHERE producto.id= paramidproducto;
 END$$
 DELIMITER ;
-
-
-
-
-
 
 create table sexo(
 id int auto_increment not null primary key,
