@@ -1,6 +1,8 @@
 create database  bdpizzeria;
 use bdpizzeria ;
 
+
+/*ESTO YA ESTÁ HECHO DESDE LA MIGRACION*/
 create table tipousuario(
 id int auto_increment not null primary key,
 tipousuario varchar(50),
@@ -56,11 +58,13 @@ activo bit,
 foreign key(fktipousuario) references tipousuario(id)
 );
 
+
 create table tipoproducto(
 id int auto_increment not null primary key,
 tipoproducto varchar(50),
 estadotipoproducto bit
 );
+
 
 insert into tipoproducto (tipoproducto,estadotipoproducto) values ('Pizza',1);
 insert into tipoproducto (tipoproducto,estadotipoproducto) values ('Bebidas',1);

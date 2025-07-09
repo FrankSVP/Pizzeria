@@ -28,6 +28,24 @@
         </div>
     </li>
 
+    <!-- Menú desplegable Parte superior -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTopMenu1"
+            aria-expanded="true" aria-controls="collapseTopMenu">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Manejo de Productos</span>
+        </a>
+        <div id="collapseTopMenu1" class="collapse" aria-labelledby="headingTopMenu" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item" href="{{ route('tipoproducto.index') }}">Tipos de Productos</a>
+
+
+            </div>
+        </div>
+    </li>
+
+
     <li class="nav-item">
         <a class="nav-link" href="{{ route('cliente.index') }}">
             <i class="fas fa-user-friends"></i>
