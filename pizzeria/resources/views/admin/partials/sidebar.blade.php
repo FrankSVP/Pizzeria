@@ -3,7 +3,7 @@
     <!-- Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('admin.dashboard') }}">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-cogs"></i>
+            <i class="fas fa-pizza-slice"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Pizzería</div>
     </a>
@@ -15,7 +15,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTopMenu"
             aria-expanded="true" aria-controls="collapseTopMenu">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <i class="fas fa-user-alt"></i>
             <span>Manejo de Usuarios</span>
         </a>
         <div id="collapseTopMenu" class="collapse" aria-labelledby="headingTopMenu" data-parent="#accordionSidebar">
@@ -28,14 +28,30 @@
         </div>
     </li>
 
-    <!-- Menú desplegable Parte superior -->
+     <!-- Menú desplegable Parte superior -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTopMenu1"
             aria-expanded="true" aria-controls="collapseTopMenu">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Manejo de Productos</span>
+            <i class="fas fa-pizza-slice"></i>
+            <span>Manejo de Proveedores</span>
         </a>
         <div id="collapseTopMenu1" class="collapse" aria-labelledby="headingTopMenu" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+
+                <a class="collapse-item" href="{{ route('presentacionproductoproveedor.index') }}">Presentacion Producto</a>
+                
+            </div>
+        </div>
+    </li>
+
+    <!-- Menú desplegable Parte superior -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTopMenu2"
+            aria-expanded="true" aria-controls="collapseTopMenu">
+            <i class="fas fa-pizza-slice"></i>
+            <span>Manejo de Productos</span>
+        </a>
+        <div id="collapseTopMenu2" class="collapse" aria-labelledby="headingTopMenu" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
 
                 <a class="collapse-item" href="{{ route('tipoproducto.index') }}">Tipos de Productos</a>

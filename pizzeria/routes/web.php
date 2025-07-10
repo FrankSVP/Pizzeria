@@ -6,6 +6,7 @@ use App\Http\Controllers\TipoProductoController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PresentacionProductoProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,6 @@ Route::prefix('admin')->group(function () {
      Route::resource('usuario', 'UsuarioController')->names('usuario');
      Route::resource('producto', 'ProductoController')->names('producto');
       Route::resource('cliente', 'ClienteController')->names('cliente');
+      Route::resource('presentacionproductoproveedor', 'PresentacionProductoProveedorController')->names('presentacionproductoproveedor');
 
 });
