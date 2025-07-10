@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TipoUsuarioController;
 use App\Http\Controllers\TipoProductoController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ProductoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +28,6 @@ Route::prefix('admin')->group(function () {
      Route::resource('cliente', 'ClienteController')->names('cliente');
      Route::resource('tipoproducto', 'TipoProductoController')->names('tipoproducto');
      Route::resource('usuario', 'UsuarioController')->names('usuario');
+     Route::resource('producto', 'ProductoController')->names('producto');
 
 });

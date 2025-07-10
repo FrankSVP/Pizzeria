@@ -110,15 +110,17 @@ select * from mostrartiposproductos;
 
 
 
-
+/*ESTO YA ESTÁ EN LA MIGRACIÓN*/
 create table producto(
 id int auto_increment not null primary key,
 nombreproducto varchar(100),
 descripcionproducto varchar(150),
-precioproducto double(5,2),
+precioproducto double(10,2),
 stock int,
 fktipoproducto int,
-estadoproducto bit,
+activo BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMP NULL DEFAULT NULL,
+updated_at TIMESTAMP NULL DEFAULT NULL,
 foreign key(fktipoproducto) references tipoproducto(id)
 );
 

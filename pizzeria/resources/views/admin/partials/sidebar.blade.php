@@ -39,8 +39,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
 
                 <a class="collapse-item" href="{{ route('tipoproducto.index') }}">Tipos de Productos</a>
-
-
+                <a class="collapse-item" href="{{ route('producto.index') }}">Productos</a>
             </div>
         </div>
     </li>
