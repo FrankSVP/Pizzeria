@@ -3,72 +3,73 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
+use App\Models\Sexo;
 use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+     /**
+     * Muestra la lista de clientes.
+     */
     public function index()
     {
-        $clientes = Cliente::where('estadocliente', 1)->get();
-        return view('admin.cliente.index', compact('clientes'));
+        $clientes = Cliente::with('sexo')->get();
+        $sexos = Sexo::where('activo', true)->get();
+
+        return view('admin.cliente.index', compact('clientes', 'sexos'));
     }
 
+    /**
+     * Guarda un nuevo cliente.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'nombres' => 'required|string|max:100',
-            'appaterno' => 'required|string|max:100',
-            'apmaterno' => 'required|string|max:100',
-            'direccion' => 'nullable|string|max:300',
-            'celular1' => 'nullable|string|max:15',
-            'celular2' => 'nullable|string|max:15'
+            'nombres'     => 'required|string|max:100',
+            'appaterno'   => 'required|string|max:100',
+            'apmaterno'   => 'required|string|max:100',
+            'direccion'   => 'required|string|max:300',
+            'celular1'    => 'required|string|max:15',
+            'celular2'    => 'nullable|string|max:15',
+            'fksexo'      => 'required|exists:sexo,id',
+            'activo'      => 'boolean',
         ]);
 
-        Cliente::create([
-            'nombres' => $request->input('nombres'),
-            'appaterno' => $request->input('appaterno'),
-            'apmaterno' => $request->input('apmaterno'),
-            'direccion' => $request->input('direccion'),
-            'celular1' => $request->input('celular1'),
-            'celular2' => $request->input('celular2'),
-            'fksexo' => 1,
-            'estadocliente' => 1,
-        ]);
+        Cliente::create($request->all());
 
-        return redirect()->route('cliente.index')->with('success', 'Cliente agregado correctamente.');
+        return redirect()->back()->with('success', 'Cliente creado correctamente.');
     }
 
+    /**
+     * Actualiza un cliente existente.
+     */
     public function update(Request $request, $id)
     {
+        $cliente = Cliente::findOrFail($id);
+
         $request->validate([
-            'nombres' => 'required|string|max:100',
-            'appaterno' => 'required|string|max:100',
-            'apmaterno' => 'required|string|max:100',
-            'direccion' => 'nullable|string|max:300',
-            'celular1' => 'nullable|string|max:15',
-            'celular2' => 'nullable|string|max:15'
+            'nombres'     => 'required|string|max:100',
+            'appaterno'   => 'required|string|max:100',
+            'apmaterno'   => 'required|string|max:100',
+            'direccion'   => 'required|string|max:300',
+            'celular1'    => 'required|string|max:15',
+            'celular2'    => 'nullable|string|max:15',
+            'fksexo'      => 'required|exists:sexo,id',
+            'activo'      => 'boolean',
         ]);
 
-        $tipo = Cliente::findOrFail($id);
-        $tipo->update([
-            'nombres' => $request->input('nombres'),
-            'appaterno' => $request->input('appaterno'),
-            'apmaterno' => $request->input('apmaterno'),
-            'direccion' => $request->input('direccion'),
-            'celular1' => $request->input('celular1'),
-            'celular2' => $request->input('celular2'),
-        ]);
+        $cliente->update($request->all());
 
-        return redirect()->route('cliente.index')->with('success', 'Cliente actualizado correctamente.');
+        return redirect()->back()->with('success', 'Cliente actualizado correctamente.');
     }
 
+    /**
+     * Elimina un cliente.
+     */
     public function destroy($id)
     {
-        $tipo = Cliente::findOrFail($id);
-        $tipo->update([
-            'estadocliente' => 0
-        ]);
+        Cliente::destroy($id);
 
-        return redirect()->route('cliente.index')->with('success', 'Cliente eliminado correctamente.');
+        return redirect()->back()->with('success', 'Cliente eliminado correctamente.');
     }
 }

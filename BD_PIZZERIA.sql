@@ -174,12 +174,17 @@ UPDATE producto set producto.estadoproducto =0 WHERE producto.id= paramidproduct
 END$$
 DELIMITER ;
 
+/*ESTO YA ESTÁ EN LA MIGRACION
+Y EL AUTOLLENADO INICIAL POR SEEDER DE LARAVEL*/
 create table sexo(
 id int auto_increment not null primary key,
 sexo varchar(50),
-estadosexo bit
+activo BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMP NULL DEFAULT NULL,
+updated_at TIMESTAMP NULL DEFAULT NULL
 );
 
+/*ESTO YA ESTÁ EN LA MIGRACION*/
 create table cliente(
 id int auto_increment not null primary key,
 nombres varchar(100),
@@ -189,7 +194,9 @@ direccion varchar(300),
 celular1 varchar(15),
 celular2 varchar(15),
 fksexo int,
-estadocliente bit,
+activo BOOLEAN DEFAULT TRUE,
+created_at TIMESTAMP NULL DEFAULT NULL,
+updated_at TIMESTAMP NULL DEFAULT NULL,
 foreign key(fksexo) references sexo(id)
 );
 
